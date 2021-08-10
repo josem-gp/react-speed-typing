@@ -11,7 +11,7 @@ const App = () => {
   return (
     <div>
       <h1>How fast do you type?</h1>
-      <textarea />
+      <textarea value={type} onChange={handleChange} />
       <h4>Time remaining: ???</h4>
       <button>Start</button>
       <h1>Word count: ???</h1>
