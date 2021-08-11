@@ -9,7 +9,8 @@ const App = () => {
   };
 
   const calculateWords = () => {
-    console.log(type.split(" ").length);
+    const wordsArr = type.trim().split(" ");
+    return wordsArr.filter((word) => word !== "").length;
   };
 
   return (
@@ -17,8 +18,8 @@ const App = () => {
       <h1>How fast do you type?</h1>
       <textarea value={type} onChange={handleChange} />
       <h4>Time remaining: ???</h4>
-      <button onClick={calculateWords}>Start</button>
-      <h1>Word count: ??? </h1>
+      <button onClick={() => calculateWords}>Start</button>
+      <h1>Word count: {calculateWords} </h1>
     </div>
   );
 };
