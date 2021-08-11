@@ -19,6 +19,13 @@ const App = () => {
 
   const handleClick = () => {
     setShouldRun(true);
+    handleRestart();
+  };
+
+  const handleRestart = () => {
+    setType("");
+    setTimeRemaining(5);
+    setTotalWords(0);
   };
 
   useEffect(() => {
