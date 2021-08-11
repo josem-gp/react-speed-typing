@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 
 const App = () => {
+  const STARTING_TIME = 5;
+
   const [type, setType] = useState("");
-  const [timeRemaining, setTimeRemaining] = useState(5);
+  const [timeRemaining, setTimeRemaining] = useState(STARTING_TIME);
   const [shouldRun, setShouldRun] = useState(false);
   const [totalWords, setTotalWords] = useState(0);
 
@@ -24,7 +26,7 @@ const App = () => {
 
   const restartGame = () => {
     setType("");
-    setTimeRemaining(5);
+    setTimeRemaining(STARTING_TIME);
     setTotalWords(0);
   };
 
