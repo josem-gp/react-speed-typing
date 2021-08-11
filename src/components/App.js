@@ -50,7 +50,9 @@ const App = () => {
       <h1>How fast do you type?</h1>
       <textarea value={type} onChange={handleChange} />
       <h4>Time remaining: {timeRemaining}</h4>
-      <button onClick={handleClick}>Start</button>
+      <button disabled={shouldRun} onClick={handleClick}>
+        Start
+      </button>
       <h1>Word count: {totalWords} </h1>
     </div>
   );
