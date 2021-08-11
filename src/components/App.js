@@ -23,6 +23,7 @@ const App = () => {
   const handleClick = () => {
     setShouldRun(true);
     restartGame();
+    textAreaRef.current.disabled = false;
     textAreaRef.current.focus();
   };
 
