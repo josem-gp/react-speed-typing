@@ -4,6 +4,7 @@ const App = () => {
   const [type, setType] = useState("");
   const [timeRemaining, setTimeRemaining] = useState(5);
   const [shouldRun, setShouldRun] = useState(false);
+  const [totalWords, setTotalWords] = useState(0);
 
   const handleChange = (event) => {
     const { value } = event.target;
@@ -12,7 +13,8 @@ const App = () => {
 
   const calculateWords = () => {
     const wordsArr = type.trim().split(" ");
-    return wordsArr.filter((word) => word !== "").length;
+    const wordCount = wordsArr.filter((word) => word !== "").length;
+    setTotalWords(wordCount);
   };
 
   const handleClick = () => {
@@ -20,13 +22,14 @@ const App = () => {
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      if (shouldRun && timeRemaining !== 0) {
+    if (shouldRun && timeRemaining !== 0) {
+      setTimeout(() => {
         setTimeRemaining(timeRemaining - 1);
-      } else if (timeRemaining === 0) {
-        setShouldRun(false);
-      }
-    }, 1000);
+      }, 1000);
+    } else if (timeRemaining === 0) {
+      setShouldRun(false);
+      calculateWords();
+    }
   });
 
   return (
@@ -35,7 +38,7 @@ const App = () => {
       <textarea value={type} onChange={handleChange} />
       <h4>Time remaining: {timeRemaining}</h4>
       <button onClick={handleClick}>Start</button>
-      <h1>Word count: ??? </h1>
+      <h1>Word count: {totalWords} </h1>
     </div>
   );
 };
