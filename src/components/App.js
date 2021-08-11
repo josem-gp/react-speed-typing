@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const App = () => {
   const [type, setType] = useState("");
@@ -8,13 +8,17 @@ const App = () => {
     setType(value);
   };
 
+  const calculateWords = () => {
+    console.log(type.split(" ").length);
+  };
+
   return (
     <div>
       <h1>How fast do you type?</h1>
       <textarea value={type} onChange={handleChange} />
       <h4>Time remaining: ???</h4>
-      <button>Start</button>
-      <h1>Word count: ???</h1>
+      <button onClick={calculateWords}>Start</button>
+      <h1>Word count: ??? </h1>
     </div>
   );
 };
