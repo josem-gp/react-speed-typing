@@ -48,7 +48,7 @@ const App = () => {
   return (
     <div>
       <h1>How fast do you type?</h1>
-      <textarea value={type} onChange={handleChange} />
+      <textarea disabled={!shouldRun} value={type} onChange={handleChange} />
       <h4>Time remaining: {timeRemaining}</h4>
       <button disabled={shouldRun} onClick={handleClick}>
         Start
