@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 const App = () => {
   const [type, setType] = useState("");
   const [timeRemaining, setTimeRemaining] = useState(5);
+  const [shouldRun, setShouldRun] = useState(false);
 
   const handleChange = (event) => {
     const { value } = event.target;
@@ -14,9 +15,13 @@ const App = () => {
     return wordsArr.filter((word) => word !== "").length;
   };
 
+  const handleClick = () => {
+    setShouldRun(true);
+  };
+
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (timeRemaining !== 0) {
+    setTimeout(() => {
+      if (shouldRun && timeRemaining !== 0) {
         setTimeRemaining(timeRemaining - 1);
       }
     }, 1000);
@@ -27,7 +32,7 @@ const App = () => {
       <h1>How fast do you type?</h1>
       <textarea value={type} onChange={handleChange} />
       <h4>Time remaining: {timeRemaining}</h4>
-      <button onClick={() => calculateWords}>Start</button>
+      <button onClick={handleClick}>Start</button>
       <h1>Word count: ??? </h1>
     </div>
   );
