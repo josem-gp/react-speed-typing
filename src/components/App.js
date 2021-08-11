@@ -19,13 +19,18 @@ const App = () => {
 
   const handleClick = () => {
     setShouldRun(true);
-    handleRestart();
+    restartGame();
   };
 
-  const handleRestart = () => {
+  const restartGame = () => {
     setType("");
     setTimeRemaining(5);
     setTotalWords(0);
+  };
+
+  const endGame = () => {
+    setShouldRun(false);
+    calculateWords();
   };
 
   useEffect(() => {
@@ -34,8 +39,7 @@ const App = () => {
         setTimeRemaining(timeRemaining - 1);
       }, 1000);
     } else if (timeRemaining === 0) {
-      setShouldRun(false);
-      calculateWords();
+      endGame();
     }
   });
 
